@@ -12,7 +12,7 @@ class App extends Component {
             <h1>The Challenge</h1>
             <p>We are going to build a useful app by using the power of the mob</p>
             <p>View our progress throughout the day by visiting</p>
-            <h3>https://mobforwards.azurewebsites.net</h3>
+            <h3>https://futuresync2019mob.azurewebsites.net/</h3>
           </div>
           <div className="col"></div>
         </div>
