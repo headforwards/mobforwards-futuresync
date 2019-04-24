@@ -1,8 +1,35 @@
 import React, { Component } from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import config from './config';
+import Firebase from 'firebase';
 
 class App extends Component {
+  
+  constructor(props) {
+    super(props);
+    Firebase.initializeApp(config);
+    this.state = {
+      speakers: []
+    }
+  }
+
+  getSpeakerData = () => {
+    let ref = Firebase.database().ref('/speakers');
+    ref.on('value', snapshot => {
+      const state = snapshot.val();
+      this.setState(state);
+    });
+    console.log('data returned me lover');
+  }
+
+  componentDidMount() {
+    this.getSpeakerData();
+  }
+
   render() {
+    
+    const {speakers} = this.state;
+    console.log(this.state);
     return (
 
       <div className="container">
