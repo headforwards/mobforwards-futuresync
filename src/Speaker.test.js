@@ -26,4 +26,8 @@ describe("Speaker.js", () => {
     it("displays the speaker's image", () =>{
         expect(speaker.find("[data-image]").length).toBe(1);
     })
+
+    it("has a interest button", () => {
+        expect(speaker.find("[data-interest]").length).toBe(1);
+    });
 });

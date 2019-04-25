@@ -34,9 +34,9 @@ class App extends Component {
       <div className="container">
         <div className="row">
           <div className="col">
-            <p>
-            Here is a list of speakers
-            </p>
+            <h1>
+            Futuresync Speakers
+            </h1>
             {
               list
             }
