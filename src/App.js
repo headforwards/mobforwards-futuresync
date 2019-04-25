@@ -8,18 +8,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     Firebase.initializeApp(config);
-    this.state = {
-      speakers: []
-    }
+this.state = {}
   }
 
   getSpeakerData = () => {
     let ref = Firebase.database().ref('/speakers');
     ref.on('value', snapshot => {
       const state = snapshot.val();
-      this.setState(state);
+      this.setState({ speakers : state});
     });
-    console.log('data returned me lover');
   }
 
   componentDidMount() {
@@ -28,8 +25,8 @@ class App extends Component {
 
   render() {
     
-    const {speakers} = this.state;
-    console.log(this.state);
+    const { speakers } = this.state;
+    console.log(speakers);
     return (
 
       <div className="container">
@@ -41,7 +38,10 @@ class App extends Component {
             <p>View our progress throughout the day by visiting</p>
             <h3>https://futuresync2019mob.azurewebsites.net/</h3>
           </div>
-          <div className="col"></div>
+          <div className="col">
+          {speakers && speakers.length > 0 && speakers[2].name }
+          </div>
+          
         </div>
       </div>
     );
