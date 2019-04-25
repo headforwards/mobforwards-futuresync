@@ -35,7 +35,5 @@ describe("Speaker.js", () => {
         expect(speaker.find("[data-interest]").length).toBe(1);
     });
 
-    // it("clicking the interest button calls updateTalkCount", () => {
 
-    // });
 });
