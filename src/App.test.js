@@ -3,26 +3,35 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { shallow } from 'enzyme';
 import './setupTests';
-import Firebase from 'firebase';
+import {getSpeakers} from './firebaseService';
 
-jest.mock('firebase', () => {
+jest.mock('./firebaseService',()  => {
   return {
-    initializeApp: jest.fn()
+    getSpeakers : jest.fn()
   }
+});
+
+describe("app", () => {
+  afterEach (() => {
+    getSpeakers.mockReset();
+  }); 
+
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<App />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  
+  it('sets the state', () => {
+    const app = shallow(<App />);
+    expect(app.state()).toMatchObject({});
+  });
+  
+  it('should display a list of speakers', () => {
+    getSpeakers.mockReturnValueOnce(['donnie', 'brasco']);
+    const app = shallow(<App />);
+
+    expect(getSpeakers).toHaveBeenCalled();
+    expect(app.find('[data-speaker]').length).toBe(2);
+  });
 })
-
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
-
-it('initalizes the database connection correctly', () => {
-  expect(Firebase.initializeApp).toHaveBeenCalled();
-});
-
-it('sets the state', () => {
-  const app = shallow(<App />);
-  expect(app.state()).toMatchObject({});
-});
-
