@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Firebase from 'firebase';
-import  config from './config'
+import  config from './config';
+import Speaker from './Speaker';
 
 class App extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {speakers:[]}
   }
   
   componentDidMount(){
@@ -26,6 +27,7 @@ class App extends Component {
   render() {
     
     const { speakers} = this.state;
+    let list = speakers.map(m=><Speaker speaker={m} key={m.id}/>)
 
     return (
 
@@ -36,7 +38,7 @@ class App extends Component {
             Here is a list of speakers
             </p>
             {
-              speakers && speakers.map(m=><div data-speaker key={m.id}>{m.name}</div>)
+              list
             }
           </div>
           
