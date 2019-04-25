@@ -15,7 +15,8 @@ const Speaker = ({speaker}) => {
                             <h3>{speaker.name}</h3>
                         </div>
                         <div data-title>
-                            {speaker.talk.title}
+                            <h4>{speaker.talk.title}</h4>
+                            <p data-description>{speaker.talk.description}</p>
                         </div>
                         <div>
                             <button className="btn btn-success" data-interest >I'm interested</button>

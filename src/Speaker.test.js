@@ -5,7 +5,7 @@ import Speaker from './Speaker';
 describe("Speaker.js", () => {
     var speakerData = {
         name: "Test",
-        talk: { title: "Title" }
+        talk: { title: "Title", description: "Description" }
     };
 
     var speaker;
@@ -20,14 +20,22 @@ describe("Speaker.js", () => {
     });
 
     it("displays the speaker's talk title", () =>{
-        expect(speaker.find("[data-title]").text()).toBe("Title");
-    })
+        expect(speaker.find("[data-title]").text()).toContain("Title");
+    });
 
     it("displays the speaker's image", () =>{
         expect(speaker.find("[data-image]").length).toBe(1);
-    })
+    });
 
-    it("has a interest button", () => {
+    it("displays the talk description", () => {
+        expect(speaker.find("[data-description]").text()).toContain("Description");
+    });
+
+    it("has an interest button", () => {
         expect(speaker.find("[data-interest]").length).toBe(1);
     });
+
+    // it("clicking the interest button calls updateTalkCount", () => {
+
+    // });
 });
