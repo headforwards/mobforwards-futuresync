@@ -3,9 +3,9 @@ import './Speaker.css'
 
 const Speaker = ({ speaker }) => {
     return <div className="row padme">
-        <div class="col-3"><img src={speaker.imageUrl} class="img-fluid" data-image alt={speaker.name} />
+        <div className="col-3"><img src={speaker.imageUrl} className="img-fluid" data-image alt={speaker.name} />
         </div>
-        <div class="col-9">
+        <div className="col-9">
 
             <div data-name>
                 <h3>{speaker.name}</h3>
